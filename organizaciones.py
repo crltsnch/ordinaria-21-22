@@ -9,4 +9,21 @@ class Organizacion:
         self.nombre = x
         self.superheroes = y
 
-        
+    def get_nombre(self):
+        return self.nombre
+
+    def get_superheroes(self):
+        return self.superheroes
+
+    def set_superheroes(self, x):
+        self.superheroes = x
+    
+    def is_undefeated(self):
+        x = False
+        for i in range(len(self.superheroes)):
+            if self.superheroes[i].is_vivo():
+                x = True
+                break
+        return x
+
+    
