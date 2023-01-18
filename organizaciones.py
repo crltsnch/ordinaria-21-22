@@ -26,4 +26,8 @@ class Organizacion:
                 break
         return x
 
+    def surrender(self):
+        for superheroe in self.superheroes:
+            superheroe.die()
+    
     
