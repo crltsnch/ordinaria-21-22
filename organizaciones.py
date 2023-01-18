@@ -30,4 +30,21 @@ class Organizacion:
         for superheroe in self.superheroes:
             superheroe.die()
     
+    def __str__(self):
+        tp = ""
+        for superheroe in self.superheroes:
+            tp += str(superheroe.get_identificador) + '. Alias: ' + superheroe.get_alias() + ', Tipo: ' + superheroe.get_tipo().name + ', Coste: ' + str(superheroe.get_coste()) + ", Energia:" + str(superheroe.get_energia()) + "\n"
+        return tp
+    
+    def __repr__(self):
+        tr = ""
+        for superheroe in self.superheroes:
+            tr += superheroe.get_identificador + '\t' + superheroe.get_tipo().name + '\t' + superheroe.get_movimientos() + '\n'
+    
+    def get_super_undefeated(self):
+        super_vivos = []
+        for i in range (0, len(self.superheroes)):
+            if self.superheroes[i].is_vivo():
+                super_vivos.append(self.superheroes[i])
+        return super_vivos
     
