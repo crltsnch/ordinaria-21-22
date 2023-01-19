@@ -1,5 +1,7 @@
 from enum import Enum
 import random
+from SerVivo import SerVivo
+from escenarios import Escenarios
 
 class Superheroe_Type(Enum):
     HUMANO = 1
@@ -44,8 +46,16 @@ class Movimientos_Espedifico(Movimiento_General):
         super().__init__(x, a, daño)
         self.__superheroe = superheroe
     
-    def get_energia(self):
-        return self.__energia
+    def get_superheroe(self):
+        return self.__superheroe
     
-    def set_energia(self, e):
-        self.__energia = e
+class Superheroes(SerVivo):
+    numero_superheroes = 0
+
+    def __init__(self, alias, identidad, tipo, esc):
+        self.__identificador = Superheroes.numero_superheroes
+        self.__alias = alias
+        self.__identidadSecreta = identidad
+        self.__movmientos = []
+        self.__tipo = tipo
+        
