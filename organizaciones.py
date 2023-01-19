@@ -6,45 +6,45 @@ class Organizacion:
             raise TypeError('y debe ser una lista')
         if not y:
             raise ValueError('La lista no puede estar vacía, debe haber al menos un superhéroe')
-        self.nombre = x
-        self.superheroes = y
+        self.__nombre = x
+        self.__superheroes = y
 
     def get_nombre(self):
-        return self.nombre
+        return self.__nombre
 
     def get_superheroes(self):
-        return self.superheroes
+        return self.__superheroes
 
     def set_superheroes(self, x):
-        self.superheroes = x
+        self.__superheroes = x
     
     def is_undefeated(self):
         x = False
-        for i in range(len(self.superheroes)):
-            if self.superheroes[i].is_vivo():
+        for i in range(len(self.__superheroes)):
+            if self.__superheroes[i].is_vivo():
                 x = True
                 break
         return x
 
     def surrender(self):
-        for superheroe in self.superheroes:
+        for superheroe in self.__superheroes:
             superheroe.die()
     
     def __str__(self):
         tp = ""
-        for superheroe in self.superheroes:
+        for superheroe in self.__superheroes:
             tp += str(superheroe.get_identificador) + '. Alias: ' + superheroe.get_alias() + ', Tipo: ' + superheroe.get_tipo().name + ', Coste: ' + str(superheroe.get_coste()) + ", Energia:" + str(superheroe.get_energia()) + "\n"
         return tp
     
     def __repr__(self):
         tr = ""
-        for superheroe in self.superheroes:
+        for superheroe in self.__superheroes:
             tr += superheroe.get_identificador + '\t' + superheroe.get_tipo().name + '\t' + superheroe.get_movimientos() + '\n'
     
     def get_super_undefeated(self):
         super_vivos = []
-        for i in range (0, len(self.superheroes)):
-            if self.superheroes[i].is_vivo():
-                super_vivos.append(self.superheroes[i])
+        for i in range (0, len(self.__superheroes)):
+            if self.__superheroes[i].is_vivo():
+                super_vivos.append(self.__superheroes[i])
         return super_vivos
     
