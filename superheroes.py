@@ -67,4 +67,31 @@ class Superheroes(SerVivo):
         if type(esc) != Escenarios:
             raise TypeError('Escenario inválido')
         self.__coste = (esc.get_monedas()/esc.get_miembros_ekip())*(sum(self.__parrilla_poderes)/30) 
-        self.__energia      
+        self.__energia = (esc.get_energia_vital()*self.__parrilla_poderes[3])
+        Superheroes.numero_superheroes += 1
+
+        #identificar al siguiente superheroes en su posicion en la lista
+    
+    def get_identificador(self):
+        return self.__identificador
+    
+    def get_alias(self):
+        return self.__alias
+    
+    def get_movimientos(self):
+        return self.__movmientos
+    
+    def get_tipo(self):
+        return self.__tipo
+    
+    def get_parrilla_poderes(self):
+        return self.__parrilla_poderes
+    
+    def get_coste(self):
+        return self.__coste
+
+    def set_movimientos(self, x):
+        for movimiento in x:
+            if movimiento.get_tipo().value:
+                movimiento.set_daño((movimiento.get_daño()/10)*(0.8*self.__parrilla_poderes[1] + 0.25*self.__parrilla_poderes[2] + 0.75*self.__parrilla_poderes[5] + self.__parrilla_poderes[4]))
+                
