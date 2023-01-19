@@ -58,4 +58,13 @@ class Superheroes(SerVivo):
         self.__identidadSecreta = identidad
         self.__movmientos = []
         self.__tipo = tipo
-        
+        if type(tipo) !=  Superheroe_Type:
+            raise TypeError('Tipo inválido')
+        if tipo.value:
+            self.__parrilla_poderes = [random.randint(3,8),random.randint(1,7), random.randint(2,6), random.randint(2,6), random.randint(1,7), random.randint(1,8)]
+        else:
+            self.__parrilla_poderes = [random.randint(4,7),random.randint(1,8), random.randint(1,8), random.randint(3,8), random.randint(1,8), random.randint(3,7)]
+        if type(esc) != Escenarios:
+            raise TypeError('Escenario inválido')
+        self.__coste = (esc.get_monedas()/esc.get_miembros_ekip())*(sum(self.__parrilla_poderes)/30) 
+        self.__energia      
