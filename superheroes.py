@@ -94,4 +94,19 @@ class Superheroes(SerVivo):
         for movimiento in x:
             if movimiento.get_tipo().value:
                 movimiento.set_daño((movimiento.get_daño()/10)*(0.8*self.__parrilla_poderes[1] + 0.25*self.__parrilla_poderes[2] + 0.75*self.__parrilla_poderes[5] + self.__parrilla_poderes[4]))
-                
+            else:
+                movimiento.set_daño((movimiento.get_daño()/10)*(self.__parrilla_poderes[0] + 0.75*self.__parrilla_poderes[2] + 0.25*self.__parrilla_poderes[5] + 0.2*self.__parrilla_poderes[1]))
+            self.__movimientos.append(movimiento)
+    
+    def fight_defense(self, daño):
+        self._energia = self._energia - daño
+        if self._energia <= 0:
+            self.die()
+            self._energia = 0
+    
+    def fight_attack(self, obj, ronda):
+        obj.fight_defense(self.__movimientos[ronda].get_daño())
+    
+    def __str__(self):
+        return str(self.get_identificador()) + "| Alias: " + self.get_alias() + "| Tipo:" + self.get_tipo().name + "| Coste:" + str(self.get_coste()) + "| Energia:" + str(self.get_energia()) + "\n"
+ 
